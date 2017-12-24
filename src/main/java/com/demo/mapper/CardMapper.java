@@ -17,7 +17,7 @@ public interface CardMapper {
      * @param keys
      * @return
      */
-    @Select("select Value from Sequence  where Keys=#{keys}")
+    @Select("select Value_ from Sequence  where Keys_=#{keys}")
     String getCardNumberSequenceMaxValue(@Param("keys") String keys);
     
     /**
@@ -26,7 +26,7 @@ public interface CardMapper {
      * @param sequenceBean
      * @return
      */
-    @Insert("insert into Sequence(Keys,Value,Description) values (#{sequence.keys},#{sequence.value},#{sequence.description})")
+    @Insert("insert into Sequence(Keys_,Value_,Description) values (#{sequence.keys_},#{sequence.value_},#{sequence.description})")
     @SelectKey(statement = "SELECT @@IDENTITY as id", keyProperty = "sequence.id", keyColumn = "id", before = false, resultType = int.class)
     int insertSequenceDetail(@Param("sequence") SequenceBean sequenceBean);
     
@@ -37,7 +37,7 @@ public interface CardMapper {
      * @param keys
      * @return
      */
-    @Update("update Sequence set Value=#{Value} where Keys=#{Keys}")
+    @Update("update Sequence set Value_=#{Value} where Keys_=#{Keys}")
     int UpdateCardNumberMaxValue(@Param("Value") int value, @Param("Keys") String keys);
 
 }

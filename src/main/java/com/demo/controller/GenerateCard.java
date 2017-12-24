@@ -9,7 +9,7 @@ import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 
 
-import com.demo.config.pay.CardHelper;
+import com.demo.helper.CardHelper;
 
 /**
  *
