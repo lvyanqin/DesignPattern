@@ -5,21 +5,46 @@
  */
 package com.demo.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.context.ContextLoader;
+import org.springframework.web.context.WebApplicationContext;
+
+
+import com.demo.config.pay.CardHelper;
 
 /**
  *
  * @author Administrator
  */
-@Controller
 public class GenerateCard {
-    
-    public ModelAndView singleton(){
-        ModelAndView mv = new ModelAndView();
+	
+	public static void main(String[] args){
+//       
+        Thread[] t = new MyThread[10];
+        for(int i = 0; i < 10; i ++){
+        	t[i] = new MyThread();
+        	t[i].start();
+        }
         
-        mv.setViewName("/generateCardSingleton");
-        return mv;
+        
+       
+        
     }
-    
+	
+	
+	
 }
+
+
+class MyThread extends Thread{
+	
+	 WebApplicationContext webApplicationContext = ContextLoader.getCurrentWebApplicationContext();
+    CardHelper cardHelper = (CardHelper)webApplicationContext.getBean(CardHelper.class);
+	
+	@Override
+	public void run() {
+		String cardNo  = cardHelper.GenerateCardNumber();
+		System.out.println(Thread.currentThread().getName() + ":" + cardNo);
+	}
+	
+}
+
