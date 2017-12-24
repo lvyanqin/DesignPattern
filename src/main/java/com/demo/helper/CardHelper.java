@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.demo.config.pay;
+package com.demo.helper;
 
 import com.demo.bean.SequenceBean;
+import com.demo.config.pay.CardConfig;
 import com.demo.mapper.CardMapper;
 import com.demo.util.DateUtil;
 import org.apache.commons.lang3.StringUtils;
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Component;
 public class CardHelper {
  
     @Autowired
-    private static CardMapper cardMapper;
+    private CardMapper cardMapper;
 
     public String GenerateCardNumber() {
             String CARDNUMBER_SEQUENCE_KEY = "";
@@ -40,8 +41,8 @@ public class CardHelper {
                 if (CARDSEQUENCE <= 0) {
                     CARDSEQUENCE = 100000;
                     SequenceBean sequence = new SequenceBean();
-                    sequence.setKeys(CARDNUMBER_SEQUENCE_KEY);
-                    sequence.setValue(String.valueOf(CARDSEQUENCE));
+                    sequence.setKeys_(CARDNUMBER_SEQUENCE_KEY);
+                    sequence.setValue_(String.valueOf(CARDSEQUENCE));
                     sequence.setDescription(CARDNUMBER_SEQUENCE_DESCRIPTION);
 
                     cardMapper.insertSequenceDetail(sequence);

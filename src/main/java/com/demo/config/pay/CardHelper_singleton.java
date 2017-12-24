@@ -79,8 +79,8 @@ public class CardHelper_singleton {
             if (CARDSEQUENCE <= 0) {
                 CARDSEQUENCE = 100000;
                 SequenceBean sequence = new SequenceBean();
-                sequence.setKeys(CARDNUMBER_SEQUENCE_KEY);
-                sequence.setValue(String.valueOf(CARDSEQUENCE));
+                sequence.setKeys_(CARDNUMBER_SEQUENCE_KEY);
+                sequence.setValue_(String.valueOf(CARDSEQUENCE));
                 sequence.setDescription(CARDNUMBER_SEQUENCE_DESCRIPTION);
 
                 cardMapper.insertSequenceDetail(sequence);

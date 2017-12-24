@@ -10,8 +10,8 @@ public class SequenceBean implements java.io.Serializable {
 
     // Fields
     private Integer id;
-    private String keys;
-    private String value;
+    private String keys_;
+    private String value_;
     private String description;
     private Timestamp addTime;
 
@@ -25,20 +25,20 @@ public class SequenceBean implements java.io.Serializable {
     /**
      * minimal constructor
      */
-    public SequenceBean(Integer id, String keys, String value) {
+    public SequenceBean(Integer id, String keys_, String value_) {
         this.id = id;
-        this.keys = keys;
-        this.value = value;
+        this.keys_ = keys_;
+        this.value_ = value_;
     }
 
     /**
      * full constructor
      */
-    public SequenceBean(Integer id, String keys, String value, String description,
+    public SequenceBean(Integer id, String keys_, String value_, String description,
             Timestamp addTime) {
         this.id = id;
-        this.keys = keys;
-        this.value = value;
+        this.keys_ = keys_;
+        this.value_ = value_;
         this.description = description;
         this.addTime = addTime;
     }
@@ -52,20 +52,20 @@ public class SequenceBean implements java.io.Serializable {
         this.id = id;
     }
 
-    public String getKeys() {
-        return this.keys;
+    public String getKeys_() {
+        return this.keys_;
     }
 
-    public void setKeys(String keys) {
-        this.keys = keys;
+    public void setKeys_(String keys_) {
+        this.keys_ = keys_;
     }
 
-    public String getValue() {
-        return this.value;
+    public String getValue_() {
+        return this.value_;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setValue_(String value_) {
+        this.value_ = value_;
     }
 
     public String getDescription() {
