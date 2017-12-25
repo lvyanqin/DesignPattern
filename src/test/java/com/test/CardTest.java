@@ -2,6 +2,8 @@ package com.test;
 
 import com.demo.config.RootConfig;
 import com.demo.helper.CardHelper;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,9 +32,13 @@ public class CardTest {
     public void init(){}
     
     @Test
-    public void card(){
-        Thread t = new CardThread();
-        t.start();
+    public void card() throws InterruptedException{
+        Thread[] ts = new CardThread[20];
+        for(int i = 0; i < 20; i ++){
+            ts[i] = new CardThread();
+            ts[i].start();
+        }
+        Thread.sleep(60000);
 //        String cardNo = cardHelper.GenerateCardNumber();
 //        System.out.println(cardNo);
     }
@@ -40,11 +46,18 @@ public class CardTest {
     class CardThread extends Thread{
         
         @Override
-        public void run() {
-            System.out.println("【------------start-------------】");
+        public void run(){
+            long beforTime = System.currentTimeMillis();
+            try {
+                Thread.sleep(((int)(Math.random() * 10)) * 1000);
+            } catch (InterruptedException ex) {
+                System.out.println("【exception】");
+            }
+            long time = System.currentTimeMillis();
+            System.out.println(Thread.currentThread().getName() + "【------------start--------------------------------------------】" + time);
             String cardNo = cardHelper.GenerateCardNumber();
-            System.out.println("cardNo:" + cardNo);
-            System.out.println("【------------end-------------】");
+            System.out.println(Thread.currentThread().getName() + "cardNo:" + cardNo);
+            System.out.println(Thread.currentThread().getName() + "【------------end-------------】" + time);
         }
 
     }
