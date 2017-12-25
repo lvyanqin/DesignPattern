@@ -1,3 +1,5 @@
+package com.test;
+
 import com.demo.config.RootConfig;
 import com.demo.helper.CardHelper;
 
@@ -24,13 +26,30 @@ public class CardTest {
     @Autowired
     private CardHelper cardHelper;
     
-    @Test
+//    @Test
     public void init(){}
     
     @Test
     public void card(){
-        String cardNo = cardHelper.GenerateCardNumber();
-        System.out.println(cardNo);
+        Thread t = new CardThread();
+        t.start();
+//        String cardNo = cardHelper.GenerateCardNumber();
+//        System.out.println(cardNo);
     }
     
+    class CardThread extends Thread{
+        
+        @Override
+        public void run() {
+            System.out.println("【------------start-------------】");
+            String cardNo = cardHelper.GenerateCardNumber();
+            System.out.println("cardNo:" + cardNo);
+            System.out.println("【------------end-------------】");
+        }
+
+    }
+  
+    
 }
+
+

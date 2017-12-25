@@ -8,7 +8,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import org.junit.Test;
 
-import com.demo.config.pay.CardHelper_singleton;
+import com.demo.config.pay.CardHelper_Singleton;
 
 /**
  * @author yanlei
@@ -21,14 +21,14 @@ public class ReflectTest {
 	public void test1() {
 		Object o = null;
 		try {
-			Class c = Class.forName("com.demo.config.pay.CardHelper_singleton");
+			Class c = Class.forName("com.demo.config.pay.CardHelper_Singleton");
 			Constructor<?>[] cons = c.getDeclaredConstructors();
 			cons[0].setAccessible(true);
 			o = cons[0].newInstance();
-			CardHelper_singleton cardHelper_singleton = (CardHelper_singleton) o;
+			CardHelper_Singleton cardHelper_singleton = (CardHelper_Singleton) o;
 			System.out.println(cardHelper_singleton);
 			o = cons[0].newInstance();
-			cardHelper_singleton = (CardHelper_singleton) o;
+			cardHelper_singleton = (CardHelper_Singleton) o;
 			System.out.println(cardHelper_singleton);
 			
 		} catch (ClassNotFoundException e) {

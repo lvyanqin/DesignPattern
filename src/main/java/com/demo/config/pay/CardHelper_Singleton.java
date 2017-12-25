@@ -16,10 +16,10 @@ import com.demo.util.DateUtil;
  *
  * @author Administrator
  */
-public class CardHelper_singleton {
+public class CardHelper_Singleton {
     
     //定义一个私有的静态全局变量来保存该类的唯实例
-    private static CardHelper_singleton cardhelper;
+    private static CardHelper_Singleton cardhelper;
     private static CardMapper cardMapper;
 
     //定义一个只读静态对象
@@ -28,13 +28,13 @@ public class CardHelper_singleton {
 
     // 构造函数必须是私有的
     // 这样在外部便无法使用 new 来创建该类的实例
-    private CardHelper_singleton() {
+    private CardHelper_Singleton() {
     }
 
     // 定义一个全局访问点
     // 设置为静态方法
     // 则在类的外部便无需实例化就可以调用该方法
-    public static CardHelper_singleton GetInstance(CardMapper c) {
+    public static CardHelper_Singleton GetInstance(CardMapper c) {
         //这里可以保证只实例化一次
         //即在第一次调用时实例化
         //以后调用便不会再实例化
@@ -46,7 +46,7 @@ public class CardHelper_singleton {
             try {
                 //第二重 cardhelper == null
                 if (cardhelper == null) {
-                    cardhelper = new CardHelper_singleton();
+                    cardhelper = new CardHelper_Singleton();
                     cardMapper = c;
                 }
             } finally {
