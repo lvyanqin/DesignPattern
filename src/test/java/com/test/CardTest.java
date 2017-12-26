@@ -39,30 +39,30 @@ public class CardTest {
             ts[i].start();
         }
         Thread.sleep(60000);
-//        String cardNo = cardHelper.GenerateCardNumber();
-//        System.out.println(cardNo);
     }
     
     class CardThread extends Thread{
         
         @Override
         public void run(){
+            String threadName = Thread.currentThread().getName();
             long beforTime = System.currentTimeMillis();
-            try {
-                Thread.sleep(((int)(Math.random() * 10)) * 1000);
-            } catch (InterruptedException ex) {
-                System.out.println("【exception】");
-            }
+//            try {
+//                Thread.sleep(((int)(Math.random() * 10)) * 1000);
+//            } catch (InterruptedException ex) {
+//                System.out.println("【exception】");
+//            }
             long time = System.currentTimeMillis();
-            System.out.println(Thread.currentThread().getName() + "【------------start--------------------------------------------】" + time);
+            System.out.println("com.test.CardTest_Singleton.CardThread.run():" + cardHelper.hashCode());
+//            System.out.println(Thread.currentThread().getName() + "【------------start--------------------------------------------】" + time);
             String cardNo = cardHelper.GenerateCardNumber();
-            System.out.println(Thread.currentThread().getName() + "cardNo:" + cardNo);
-            System.out.println(Thread.currentThread().getName() + "【------------end-------------】" + time);
+            System.out.println(threadName + "cardNo:" + cardNo);
+            long endTime = System.currentTimeMillis();
+            System.out.println(threadName + "【------------end-------------】" + (endTime - beforTime));
         }
 
     }
-  
-    
+   
 }
 
 

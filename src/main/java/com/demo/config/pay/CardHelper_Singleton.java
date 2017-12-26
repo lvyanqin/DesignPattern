@@ -25,6 +25,7 @@ public class CardHelper_Singleton {
     //定义一个只读静态对象
     //且这个对象是在程序运行时创建的
     private static Object syncObject = new Object();
+    private static Lock lock = new ReentrantLock();
 
     // 构造函数必须是私有的
     // 这样在外部便无法使用 new 来创建该类的实例
@@ -58,7 +59,7 @@ public class CardHelper_Singleton {
     }
 
     public String GenerateCardNumber() {
-        Lock lock = new ReentrantLock();// 锁对象
+        // 锁对象
         lock.lock();
         try {
             String CARDNUMBER_SEQUENCE_KEY = "";

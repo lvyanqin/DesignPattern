@@ -29,20 +29,30 @@ public class CardTest_Singleton {
     public void init(){}
     
     @Test
-    public void card(){
-        Thread t = new CardThread();
-        t.start();
+    public void card() throws InterruptedException{
+        
+        Thread[] ts = new CardThread[20];
+        for(int i = 0; i < 20; i ++){
+            ts[i] = new CardThread();
+            ts[i].start();
+        }
+        Thread.sleep(60000);
     }
     
     class CardThread extends Thread{
         
         @Override
         public void run() {
-            System.out.println("【------------start-------------】");
+            String threadName = Thread.currentThread().getName();
+//            long beforTime = System.currentTimeMillis();
+//            System.out.println("【------------start-------------】");
             CardHelper_Singleton cardHelper = CardHelper_Singleton.GetInstance(cardMapper);
+//            System.out.println("com.test.CardTest_Singleton.CardThread.run():" + cardHelper.hashCode());
+
             String cardNo = cardHelper.GenerateCardNumber();
-            System.out.println("cardNo:" + cardNo);
-            System.out.println("【------------end-------------】");
+            System.out.println(threadName + "--cardNo:" + cardNo);
+//            long endTime = System.currentTimeMillis();
+//            System.out.println(threadName + "【------------end-------------】" + (endTime - beforTime));
         }
 
     }
