@@ -1,0 +1,25 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.demo.controller;
+
+/**
+ *
+ * @author Administrator
+ */
+public enum DataSourceEnum {
+    DATASOURCE;
+    
+    private DBConnection connection = null;
+    
+    private DataSourceEnum() {
+        connection = new DBConnection();
+    }
+    
+    public DBConnection getConnection() {
+        return connection;
+    }
+} 
+

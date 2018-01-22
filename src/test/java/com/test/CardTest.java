@@ -28,10 +28,10 @@ public class CardTest {
     @Autowired
     private CardHelper cardHelper;
     
-//    @Test
+    @Test
     public void init(){}
     
-    @Test
+//    @Test
     public void card() throws InterruptedException{
         Thread[] ts = new CardThread[20];
         for(int i = 0; i < 20; i ++){

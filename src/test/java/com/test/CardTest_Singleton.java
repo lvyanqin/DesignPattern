@@ -28,7 +28,7 @@ public class CardTest_Singleton {
     @Test
     public void init(){}
     
-    @Test
+//    @Test
     public void card() throws InterruptedException{
         
         Thread[] ts = new CardThread[20];

@@ -17,7 +17,7 @@ import com.demo.config.pay.CardHelper_Singleton;
  */
 public class ReflectTest {
 	
-	@Test
+//	@Test
 	public void test1() {
 		Object o = null;
 		try {
